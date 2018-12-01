@@ -1,0 +1,31 @@
+{
+  "name": "gulp-requirejs",
+  "version": "1.0.0",
+  "description": "gulp and requirejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "marco.peinado",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mpeinado/gulp-requirejs"
+  },
+  "dependencies": {
+    "bootstrap": "^4.1.3",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "latest",
+    "gulp-concat": "^2.6.1",
+    "gulp-csso": "^2.0.0",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-sass": "^2.0.0",
+    "gulp-uglify": "^2.0.0",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.6",
+    "requirejs": "^2.3.6",
+    "run-sequence": "^1.2.2"
+  }
+}
