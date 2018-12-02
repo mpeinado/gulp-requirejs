@@ -58,8 +58,8 @@ gulp.task('styles', function () {
  * Copy over third-party scripts - jQuery
  */
 gulp.task('third-party-scripts', function() {
-    gulp.src(['./node_modules/jquery/dist/jquery.min.js', './node_modules/popper.js/dist/umd/popper.js', 
-        './node_modules/bootstrap/dist/js/bootstrap.min.js', './node_modules/requirejs/require.js', './scripts/main.js'])
+    gulp.src(['./node_modules/requirejs/require.js', './node_modules/jquery/dist/jquery.min.js', 
+        './node_modules/bootstrap/dist/js/bootstrap.bundle.min.js', './scripts/main.js'])
         .pipe(plumber({
             errorHandler: onError
           }))
@@ -70,7 +70,7 @@ gulp.task('third-party-scripts', function() {
  * Copy over third-party scripts - jQuery
  */
 gulp.task('scripts', function() {
-    gulp.src('scripts/**/*.js')
+    gulp.src(['scripts/**/*.js', '!scripts/main.js'])
         .pipe(plumber({
             errorHandler: onError
           }))
@@ -88,7 +88,8 @@ gulp.task('default', ['clean'], function() {
     runSequence(
         'styles',
         'move-bootstrap-styles',
+        'scripts',
         'third-party-scripts',
-        'scripts'
+        
     );
 });

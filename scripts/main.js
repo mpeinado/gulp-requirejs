@@ -1,11 +1,8 @@
 requirejs.config({
-    baseUrl: 'dist/scripts',
     // paths
     paths: {
         'jquery': 'jquery.min',
-        'popper': 'popper',
-        'bootstrap': 'bootstrap.min',
-        "initBootstrap": "...wotever...",
+        'bootstrap': 'bootstrap.bundle.min', // includes popper.js
         'scripts': 'scripts.min'
     },
     shim : {
@@ -13,20 +10,16 @@ requirejs.config({
     }
 });
 
+
 require(['jquery'], function($) {
     console.log("Load jQuery")
 });
 
-define("initBootstrap", ["popper"], function(popper) {
-    // set popper as required by Bootstrap
-    window.Popper = popper;
-    require(["bootstrap"], function(bootstrap) {
-        // do nothing - just let Bootstrap initialise itself
-    });
-});
+require(["bootstrap"]);
 
 require(['scripts'], function() {
     console.log("Load SCripts")
 });
+
 
 
