@@ -47,11 +47,36 @@ gulp.task('styles', function () {
         }))
         // Auto-prefix css styles for cross browser compatibility
         .pipe(autoprefixer({browsers: AUTOPREFIXER_BROWSERS}))
+        .pipe(concat('style.min.css'))
         // Minify the file
         .pipe(csso())
-        .pipe(concat('style.min.css'))
         // Output
         .pipe(gulp.dest('./dist/styles'))
+  });
+
+/**
+ * Copy over third-party scripts - jQuery
+ */
+gulp.task('third-party-scripts', function() {
+    gulp.src(['./node_modules/jquery/dist/jquery.min.js', './node_modules/popper.js/dist/umd/popper.js', 
+        './node_modules/bootstrap/dist/js/bootstrap.min.js', './node_modules/requirejs/require.js', './scripts/main.js'])
+        .pipe(plumber({
+            errorHandler: onError
+          }))
+        .pipe(gulp.dest('./dist/scripts'));
+  });
+
+/**
+ * Copy over third-party scripts - jQuery
+ */
+gulp.task('scripts', function() {
+    gulp.src('scripts/**/*.js')
+        .pipe(plumber({
+            errorHandler: onError
+          }))
+        .pipe(uglify())
+        .pipe(concat('scripts.min.js'))
+        .pipe(gulp.dest('./dist/scripts'));
   });
 
 /**
@@ -59,12 +84,11 @@ gulp.task('styles', function () {
  * run with: gulp 
  * @NOTE: 'styles' has to go before 'move-bootstrap-styles'
  */
-gulp.task('default', ['clean', 'styles', 'move-bootstrap-styles'], function() {
-    console.log("Moving all files in styles folder");
-    
-    gulp.src(['/node_modules/bootstrap/css/**/*'])
-        .pipe(plumber({
-            errorHandler: onError
-        }))
-        .pipe(gulp.dest('build/styles'));
-  });
+gulp.task('default', ['clean'], function() {
+    runSequence(
+        'styles',
+        'move-bootstrap-styles',
+        'third-party-scripts',
+        'scripts'
+    );
+});

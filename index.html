@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="dist/styles/bootstrap/bootstrap.min.css" >
     <link rel="stylesheet" href="dist/styles/style.min.css" >
 
+    <!-- data-main attribute tells require.js to load
+    scripts/main.js after require.js loads. -->
+    <script data-main="dist/scripts/main" src="dist/scripts/require.js"></script>
+
     <title>Npm + Gulp + Require</title>
   </head>
   <body class="text-center">
@@ -51,10 +55,9 @@
         </footer>
       </div>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+      <!-- <script src="dist/scripts/jquery.min.js" ></script>
+      <script src="dist/scripts/popper.min.js" ></script>
+      <script src="dist/scripts/bootstrap.min.js" ></script>
+      <script src="dist/scripts/scripts.min.js" ></script> -->
   </body>
 </html>
